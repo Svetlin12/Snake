@@ -30,7 +30,29 @@ The project realises the game "Snake" which for those of you who don't know is a
 
 ## Usage
 
+* Upon launching the project, the user will see a start menu with 3 options (*"Start Game", "Help", "Exit"*).
 
+![Start Menu](https://github.com/Svetlin12/Snake/blob/main/images/Start%20Menu.PNG)
+
+* When the user's mouse comes closer to either one of *"Start Game", "Help"* or *"Exit"* the text will be highlighted with red color.
+
+![Start Menu hover](https://github.com/Svetlin12/Snake/blob/main/images/Start%20Menu%20hover.png)
+
+* When the user presses on *"Help"*, he will be taken to a separate menu which explains which controls are used in order to control the snake's movement.
+
+![Controls](https://github.com/Svetlin12/Snake/blob/main/images/Controls.png)
+
+* In order to go back to the main menu, the user needs to press on *"Back"* which becomes red when it is hovered on.
+
+![Controls hover](https://github.com/Svetlin12/Snake/blob/main/images/Controls%20hover.png)
+
+* When the user presses *"Start Game"*, the game launches and the snake goes from the top left corner of the window to the top left one by default. At this point the user can start changing it's direction by using the designated for that purpose keys (shown in *"Help"* menu).
+
+![Game Start](https://github.com/Svetlin12/Snake/blob/main/images/Game%20Start.png)
+
+* When the snake's head reaches the position of the red dot (the apple) it gets larger and the red dot changes it's location. The more apples the snake devours, the longer it gets as shown in the picture down below.
+
+![Game](https://github.com/Svetlin12/Snake/blob/main/images/Game.png)
 
 ## Author
 
