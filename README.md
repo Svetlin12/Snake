@@ -30,6 +30,8 @@ The project realises the game "Snake" which for those of you who don't know is a
 
 ## Usage
 
+
+
 ## Author
 
 Svetlin Popivanov ([GitHub](https://github.com/Svetlin12))
