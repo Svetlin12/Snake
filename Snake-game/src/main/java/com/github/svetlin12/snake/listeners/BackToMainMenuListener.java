@@ -1,10 +1,11 @@
-package Snake.src.listeners;
+package com.github.svetlin12.snake.listeners;
+
+import com.github.svetlin12.snake.frames.EndGame;
+import com.github.svetlin12.snake.startMenu.StartMenu;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
-import Snake.src.endFrame.EndGame;
-import Snake.src.startMenu.StartMenu;
 
 public class BackToMainMenuListener extends OptionListener {
 

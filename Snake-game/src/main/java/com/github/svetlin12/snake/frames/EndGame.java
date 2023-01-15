@@ -1,4 +1,6 @@
-package Snake.src.endFrame;
+package com.github.svetlin12.snake.frames;
+
+import com.github.svetlin12.snake.listeners.BackToMainMenuListener;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,7 +8,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import Snake.src.listeners.BackToMainMenuListener;
 
 public class EndGame extends JFrame {
     
