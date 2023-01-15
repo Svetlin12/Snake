@@ -21,7 +21,7 @@ public class BackToMainMenuListener extends OptionListener {
     }
     
     @Override
-    public void mousePressed(MouseEvent e) { // upon pressing the option "Back to Main Menu" in the end game frame, switch over to the Start Menu frame
+    public void mousePressed(MouseEvent e) {
         endFrame.setVisible(false);
         endFrame = null;
         StartMenu.getInstance().setVisible(true);

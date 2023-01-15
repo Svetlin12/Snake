@@ -17,7 +17,7 @@ public class StartGameListener extends OptionListener {
     }
 
     @Override
-    public void mousePressed(MouseEvent e) { // upon pressing the "Start Game" option, switch over to the game frame
+    public void mousePressed(MouseEvent e) {
         StartMenu.getInstance().setVisible(false);
         GameFrame.getInstance().setVisible(true);
     }

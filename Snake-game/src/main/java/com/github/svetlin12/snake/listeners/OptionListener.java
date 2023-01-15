@@ -31,7 +31,6 @@ public abstract class OptionListener implements MouseInputListener {
     public void mouseReleased(MouseEvent e) {
     }
 
-    // change text color on hover
     @Override
     public void mouseEntered(MouseEvent e) {
         targetComponent.setForeground(hoverColor);

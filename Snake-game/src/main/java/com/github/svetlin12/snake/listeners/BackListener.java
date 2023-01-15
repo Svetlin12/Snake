@@ -17,7 +17,7 @@ public class BackListener extends OptionListener {
     }
     
     @Override
-    public void mousePressed(MouseEvent e) { // upon pressing the "Back" option in the Help frame, switch over to the Start Menu frame
+    public void mousePressed(MouseEvent e) {
         HelpFrame.getInstance().setVisible(false);
         StartMenu.getInstance().setVisible(true);
     }

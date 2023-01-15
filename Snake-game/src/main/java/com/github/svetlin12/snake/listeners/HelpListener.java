@@ -17,7 +17,7 @@ public class HelpListener extends OptionListener {
     }
     
     @Override
-    public void mousePressed(MouseEvent e) { // upon clicking the "Help" option from the Start Menu, switch over to the Help frame
+    public void mousePressed(MouseEvent e) {
         StartMenu.getInstance().setVisible(false);
         HelpFrame.getInstance().setVisible(true);
     }
