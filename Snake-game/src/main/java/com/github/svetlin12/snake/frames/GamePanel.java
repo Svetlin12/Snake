@@ -165,7 +165,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
     // turn to the end game frame when the game is over
     private void proceedToEndFrame() {
-        GameFrame.getInstance().restartInstance();
+        GameFrame.getGameFrameInstance().restartInstance();
         new EndGame(score);
     }
 

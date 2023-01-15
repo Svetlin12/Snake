@@ -18,8 +18,8 @@ public class StartGameListener extends OptionListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        StartMenu.getInstance().setVisible(false);
-        GameFrame.getInstance().setVisible(true);
+        StartMenu.getMenuFrameInstance().setVisible(false);
+        GameFrame.getGameFrameInstance().setVisible(true);
     }
     
 }

@@ -24,6 +24,6 @@ public class BackToMainMenuListener extends OptionListener {
     public void mousePressed(MouseEvent e) {
         endFrame.setVisible(false);
         endFrame = null;
-        StartMenu.getInstance().setVisible(true);
+        StartMenu.getMenuFrameInstance().setVisible(true);
     }
 }

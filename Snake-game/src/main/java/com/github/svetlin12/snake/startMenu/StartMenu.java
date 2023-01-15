@@ -3,6 +3,7 @@ package com.github.svetlin12.snake.startMenu;
 import com.github.svetlin12.snake.listeners.EndGameListener;
 import com.github.svetlin12.snake.listeners.HelpListener;
 import com.github.svetlin12.snake.listeners.StartGameListener;
+import com.github.svetlin12.snake.utils.FrameConigUtil;
 import com.github.svetlin12.snake.utils.LabelCreator;
 
 import java.awt.Color;
@@ -16,19 +17,19 @@ import javax.swing.JPanel;
 
 public class StartMenu extends JFrame {
     
-    private static final String GAME_TITLE = "Snake";
-    private static final int SCREEN_WIDTH = 600;
-    private static final int SCREEN_HEIGHT = 600;
+    public static final String GAME_TITLE = "Snake";
+    public static final int SCREEN_WIDTH = 600;
+    public static final int SCREEN_HEIGHT = 600;
     
-    private static StartMenu instance;
+    private static StartMenu menuFrameInstance;
     
     private final JPanel headerPanel;
     private final JPanel menuOptionsPanel;
 
     private StartMenu(JPanel headerPanel, JPanel menuOptionsPanel) {
+        menuFrameInstance = this;
         this.headerPanel = headerPanel;
         this.menuOptionsPanel = menuOptionsPanel;
-        instance = this;
         initStartMenuSettings();
         decoratePanels();
     }
@@ -51,9 +52,9 @@ public class StartMenu extends JFrame {
                 LabelCreator.createSmallLabelWith("Start Game", new StartGameListener()),
                 LabelCreator.createSmallLabelWith("Help", new HelpListener()),
                 LabelCreator.createSmallLabelWith("End Game", new EndGameListener()));
-
-        attachPanelsToMenu(headerPanel, menuOptionsPanel);
-        setMenuSettings();
+        
+        FrameConigUtil.attachComponentsToFrame(menuFrameInstance, headerPanel, menuOptionsPanel);
+        FrameConigUtil.setFrameSettings(menuFrameInstance);
     }
     
     private void setPanelProperties(JPanel panel, LayoutManager layout, Dimension dimension) {
@@ -68,22 +69,10 @@ public class StartMenu extends JFrame {
         }
     }
     
-    private void setMenuSettings() {
-        instance.pack();
-        instance.setLocationRelativeTo(null);
-        instance.setVisible(true);
-    }
-    
-    private void attachPanelsToMenu(JPanel... panels) {
-        for (JPanel panel : panels) {
-            instance.add(panel);
-        }
-    }
-    
-    public static StartMenu getInstance() {
-        if (instance == null) {
+    public static StartMenu getMenuFrameInstance() {
+        if (menuFrameInstance == null) {
             return new StartMenu(new JPanel(), new JPanel());
         }
-        return instance;
+        return menuFrameInstance;
     }
 }

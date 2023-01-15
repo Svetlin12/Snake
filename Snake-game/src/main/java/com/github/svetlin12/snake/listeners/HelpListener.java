@@ -18,7 +18,7 @@ public class HelpListener extends OptionListener {
     
     @Override
     public void mousePressed(MouseEvent e) {
-        StartMenu.getInstance().setVisible(false);
-        HelpFrame.getInstance().setVisible(true);
+        StartMenu.getMenuFrameInstance().setVisible(false);
+        HelpFrame.getHelpFrameInstance().setVisible(true);
     }
 }

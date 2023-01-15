@@ -18,7 +18,7 @@ public class BackListener extends OptionListener {
     
     @Override
     public void mousePressed(MouseEvent e) {
-        HelpFrame.getInstance().setVisible(false);
-        StartMenu.getInstance().setVisible(true);
+        HelpFrame.getHelpFrameInstance().setVisible(false);
+        StartMenu.getMenuFrameInstance().setVisible(true);
     }
 }

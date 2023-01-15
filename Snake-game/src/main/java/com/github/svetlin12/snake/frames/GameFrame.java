@@ -2,42 +2,58 @@ package com.github.svetlin12.snake.frames;
 
 import javax.swing.JFrame;
 
-public class GameFrame extends JFrame {
-    private static GameFrame instance = null; // holds the Singleton instance
-    private GamePanel panelInstance = null;
+import static com.github.svetlin12.snake.startMenu.StartMenu.GAME_TITLE;
 
-    private GameFrame() {
-        panelInstance = new GamePanel();
+public class GameFrame extends JFrame {
+    private static GameFrame gameFrameInstance;
+    private static GamePanel panelInstance;
+
+    private GameFrame(GamePanel gamePanel) {
+        gameFrameInstance = this;
+        panelInstance = gamePanel;
+        setGameFrameSettings();
+    }
+    
+    private void setGameFrameSettings() {
         this.add(panelInstance);
-        this.setTitle("Snake");
+        this.setTitle(GAME_TITLE);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.pack();
         this.setVisible(false);
         this.setLocationRelativeTo(null);
-        instance = this;
     }
 
-    public static GameFrame getInstance() {
-        if (instance == null) {
-            return new GameFrame();
+    public static GameFrame getGameFrameInstance() {
+        if (gameFrameInstance == null) {
+            return new GameFrame(new GamePanel());
         }
 
-        // if there is already an existing instance and it's game panel is null, then create a new game panel and add it to the instance
-        if (instance.panelInstance == null) {
-            instance.panelInstance = new GamePanel();
-            instance.add(instance.panelInstance);
+        if (panelInstance == null) {
+            addNewPanelInstance();
         }
 
-        return instance;
+        return gameFrameInstance;
+    }
+    
+    private static void addNewPanelInstance() {
+        panelInstance = new GamePanel();
+        gameFrameInstance.add(panelInstance);
     }
 
-    // whenever the game ends, remove the game panel object and hide the game frame
     public void restartInstance() {
         if (!panelInstance.getRunningState()) {
-            instance.remove(panelInstance);
-            panelInstance = null;
-            instance.setVisible(false);
+            removePanelInstance();
         }
+    }
+    
+    private void removePanelInstance() {
+        gameFrameInstance.remove(panelInstance);
+        panelInstance = null;
+        hideFrame();
+    }
+    
+    private void hideFrame() {
+        gameFrameInstance.setVisible(false);
     }
 }
