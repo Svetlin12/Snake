@@ -9,7 +9,10 @@ import javax.swing.JLabel;
 
 public class BackToMainMenuListener extends OptionListener {
 
-    private EndGame endFrame = null;
+    private EndGame endFrame;
+    
+    public BackToMainMenuListener() {
+    }
 
     public BackToMainMenuListener(Color currColor, JLabel textComponent, EndGame endFrame) {
         super(currColor, textComponent);

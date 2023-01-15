@@ -7,13 +7,16 @@ import javax.swing.JLabel;
 
 // abstract class for all the listeners
 public abstract class OptionListener implements MouseInputListener {
-    protected Color hoverColor = new Color(163, 33, 10); // defines the color to which the text's color should change
-    protected Color prevColor; // the color of the previous text
-    protected JLabel component; // the component which text's color is changed
+    protected Color hoverColor = new Color(163, 33, 10);
+    protected Color textColor;
+    protected JLabel targetComponent;
+    
+    public OptionListener() {
+    }
 
-    public OptionListener(Color currColor, JLabel textComponent) {
-        component = textComponent;
-        prevColor = currColor;
+    public OptionListener(Color textColor, JLabel targetComponent) {
+        this.textColor = textColor;
+        this.targetComponent = targetComponent;
     }
 
     @Override
@@ -31,13 +34,12 @@ public abstract class OptionListener implements MouseInputListener {
     // change text color on hover
     @Override
     public void mouseEntered(MouseEvent e) {
-        component.setForeground(hoverColor);
+        targetComponent.setForeground(hoverColor);
     }
 
-    // revert text color back to the original upon the mouse exiting the component containing the text
     @Override
     public void mouseExited(MouseEvent e) {
-        component.setForeground(prevColor);
+        targetComponent.setForeground(textColor);
     }
 
     @Override
@@ -46,5 +48,13 @@ public abstract class OptionListener implements MouseInputListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
+    }
+    
+    public void setTextColor(Color textColor) {
+        this.textColor = textColor;
+    }
+    
+    public void setTargetComponent(JLabel targetComponent) {
+        this.targetComponent = targetComponent;
     }
 }

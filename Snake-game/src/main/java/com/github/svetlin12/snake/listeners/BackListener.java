@@ -8,6 +8,9 @@ import java.awt.Color;
 import javax.swing.JLabel;
 
 public class BackListener extends OptionListener {
+    
+    public BackListener() {
+    }
 
     public BackListener(Color currColor, JLabel textComponent) {
         super(currColor, textComponent);

@@ -3,97 +3,87 @@ package com.github.svetlin12.snake.startMenu;
 import com.github.svetlin12.snake.listeners.EndGameListener;
 import com.github.svetlin12.snake.listeners.HelpListener;
 import com.github.svetlin12.snake.listeners.StartGameListener;
+import com.github.svetlin12.snake.utils.LabelCreator;
 
-import java.awt.GridLayout;
-import java.awt.Font;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.LayoutManager;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class StartMenu extends JFrame {
+    
+    private static final String GAME_TITLE = "Snake";
+    private static final int SCREEN_WIDTH = 600;
+    private static final int SCREEN_HEIGHT = 600;
+    
+    private static StartMenu instance;
+    
+    private final JPanel headerPanel;
+    private final JPanel menuOptionsPanel;
 
-    private final JPanel header; // holds the name of the game
-    private final JPanel menuOptions; // holds the options that the user can click
-    private static StartMenu instance = null; // holds the Singleton instance
-    private final int SCREEN_WIDTH = 600, SCREEN_HEIGHT = 600; // define the screen width and height size
-    private final Font optionsFont = new Font("Segoe Script", Font.BOLD + Font.ITALIC, 30); // the font used for the options that are presented to the user
-    private final Font headerFont = new Font("Segoe Script", Font.BOLD + Font.ITALIC, 70); // the font used for the name of the game
-    private final Color textColor = new Color(33, 128, 58); // color of the text
-
-    private StartMenu() {
-        header = new JPanel();
-        menuOptions = new JPanel();
-        this.setTitle("Snake");
+    private StartMenu(JPanel headerPanel, JPanel menuOptionsPanel) {
+        this.headerPanel = headerPanel;
+        this.menuOptionsPanel = menuOptionsPanel;
+        instance = this;
+        initStartMenuSettings();
+        decoratePanels();
+    }
+    
+    private void initStartMenuSettings() {
+        this.setTitle(GAME_TITLE);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT)); // set the size of the frame
+        this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
-        this.getContentPane().setBackground(Color.BLACK); // set the whole background to black
-        instance = this;
-        decoratePanels(); // fill the empty panels we just created
+        this.getContentPane().setBackground(Color.BLACK);
     }
-
-    public static StartMenu getInstance() {
-        if (instance == null) {
-            return new StartMenu();
-        }
-        return instance;
-    }
-
+    
     private void decoratePanels() {
-        header.setLayout(new GridLayout(1, 1));
-        header.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT / 3));
+        setPanelProperties(headerPanel, new GridLayout(1, 1), new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT / 3));
+        addLabelsToPanel(headerPanel, LabelCreator.createLargeLabelWith("Snake"));
+        
+        setPanelProperties(menuOptionsPanel, new GridLayout(3, 1), new Dimension(SCREEN_WIDTH, 2 * SCREEN_HEIGHT / 3));
+        addLabelsToPanel(menuOptionsPanel,
+                LabelCreator.createSmallLabelWith("Start Game", new StartGameListener()),
+                LabelCreator.createSmallLabelWith("Help", new HelpListener()),
+                LabelCreator.createSmallLabelWith("End Game", new EndGameListener()));
 
-        // game name label
-        JLabel headerLabel = new JLabel("Snake");
-        headerLabel.setFont(headerFont);
-        headerLabel.setForeground(textColor);
-        headerLabel.setHorizontalAlignment(JLabel.CENTER);
-        headerLabel.setVerticalAlignment(JLabel.CENTER);
-
-        header.add(headerLabel);
-
-        menuOptions.setLayout(new GridLayout(3, 1));
-        menuOptions.setPreferredSize(new Dimension(SCREEN_WIDTH, 2 * SCREEN_HEIGHT / 3));
-
-        // start game option
-        JLabel startGameLabel = new JLabel("Start Game");
-        startGameLabel.setFont(optionsFont);
-        startGameLabel.setForeground(textColor);
-        startGameLabel.setVerticalAlignment(JLabel.CENTER);
-        startGameLabel.setHorizontalAlignment(JLabel.CENTER);
-        startGameLabel.addMouseListener(new StartGameListener(textColor, startGameLabel));
-
-        // help option
-        JLabel helpLabel = new JLabel("Help");
-        helpLabel.setFont(optionsFont);
-        helpLabel.setForeground(textColor);
-        helpLabel.setVerticalAlignment(JLabel.CENTER);
-        helpLabel.setHorizontalAlignment(JLabel.CENTER);
-        helpLabel.addMouseListener(new HelpListener(textColor, helpLabel));
-
-        // end game option
-        JLabel quitGameLabel = new JLabel("End Game");
-        quitGameLabel.setFont(optionsFont);
-        quitGameLabel.setForeground(textColor);
-        quitGameLabel.setVerticalAlignment(JLabel.CENTER);
-        quitGameLabel.setHorizontalAlignment(JLabel.CENTER);
-        quitGameLabel.addMouseListener(new EndGameListener(textColor, quitGameLabel));
-
-        menuOptions.add(startGameLabel);
-        menuOptions.add(helpLabel);
-        menuOptions.add(quitGameLabel);
-
-        menuOptions.setBackground(Color.BLACK);
-        header.setBackground(Color.BLACK);
-
-        instance.add(header);
-        instance.add(menuOptions);
+        attachPanelsToMenu(headerPanel, menuOptionsPanel);
+        setMenuSettings();
+    }
+    
+    private void setPanelProperties(JPanel panel, LayoutManager layout, Dimension dimension) {
+        panel.setLayout(layout);
+        panel.setPreferredSize(dimension);
+        panel.setBackground(Color.BLACK);
+    }
+    
+    private void addLabelsToPanel(JPanel panel, JLabel... labels) {
+        for (JLabel label : labels) {
+            panel.add(label);
+        }
+    }
+    
+    private void setMenuSettings() {
         instance.pack();
         instance.setLocationRelativeTo(null);
         instance.setVisible(true);
+    }
+    
+    private void attachPanelsToMenu(JPanel... panels) {
+        for (JPanel panel : panels) {
+            instance.add(panel);
+        }
+    }
+    
+    public static StartMenu getInstance() {
+        if (instance == null) {
+            return new StartMenu(new JPanel(), new JPanel());
+        }
+        return instance;
     }
 }

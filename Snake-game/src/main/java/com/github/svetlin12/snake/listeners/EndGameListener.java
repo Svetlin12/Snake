@@ -5,6 +5,9 @@ import javax.swing.JLabel;
 import java.awt.Color;
 
 public class EndGameListener extends OptionListener {
+    
+    public EndGameListener() {
+    }
 
     public EndGameListener(Color currColor, JLabel textComponent) {
         super(currColor, textComponent);

@@ -8,6 +8,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 
 public class HelpListener extends OptionListener {
+    
+    public HelpListener() {
+    }
 
     public HelpListener(Color currColor, JLabel textComponent) {
         super(currColor, textComponent);
