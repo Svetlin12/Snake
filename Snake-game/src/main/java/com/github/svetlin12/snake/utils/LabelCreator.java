@@ -8,8 +8,8 @@ import java.awt.Font;
 
 public class LabelCreator {
 	public static final Color GREEN_TEXT_COLOR = new Color(33, 128, 58);
-	private static final String FONT_NAME = "Segoe Script";
-	private static final int FONT_STYLE = Font.BOLD + Font.ITALIC;
+	public static final String FONT_NAME = "Segoe Script";
+	public static final int FONT_STYLE = Font.BOLD + Font.ITALIC;
 	private static final FontsUtil FONTS_UTIL = new FontsUtil(FONT_NAME, FONT_STYLE);
 	
 	private LabelCreator() {

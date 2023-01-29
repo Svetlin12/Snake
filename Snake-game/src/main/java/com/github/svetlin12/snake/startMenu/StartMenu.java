@@ -15,11 +15,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import static com.github.svetlin12.snake.utils.ScreenConstants.SCREEN_HEIGHT;
+import static com.github.svetlin12.snake.utils.ScreenConstants.SCREEN_WIDTH;
+
 public class StartMenu extends JFrame {
     
     public static final String GAME_TITLE = "Snake";
-    public static final int SCREEN_WIDTH = 600;
-    public static final int SCREEN_HEIGHT = 600;
     
     private static StartMenu menuFrameInstance;
     

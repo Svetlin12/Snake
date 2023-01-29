@@ -42,9 +42,7 @@ public class GameFrame extends JFrame {
     }
 
     public void restartInstance() {
-        if (!panelInstance.getRunningState()) {
-            removePanelInstance();
-        }
+        removePanelInstance();
     }
     
     private void removePanelInstance() {

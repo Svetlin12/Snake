@@ -11,8 +11,8 @@ import com.github.svetlin12.snake.utils.FrameConigUtil;
 import com.github.svetlin12.snake.utils.LabelCreator;
 
 import static com.github.svetlin12.snake.startMenu.StartMenu.GAME_TITLE;
-import static com.github.svetlin12.snake.startMenu.StartMenu.SCREEN_HEIGHT;
-import static com.github.svetlin12.snake.startMenu.StartMenu.SCREEN_WIDTH;
+import static com.github.svetlin12.snake.utils.ScreenConstants.SCREEN_HEIGHT;
+import static com.github.svetlin12.snake.utils.ScreenConstants.SCREEN_WIDTH;
 
 public class HelpFrame extends JFrame {
     
