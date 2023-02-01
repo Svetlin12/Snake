@@ -3,7 +3,7 @@ package com.github.svetlin12.snake.components;
 import static com.github.svetlin12.snake.utils.ScreenConstants.UNIT_SIZE;
 
 public enum Direction {
-	UP(-UNIT_SIZE), DOWN(UNIT_SIZE), LEFT(-UNIT_SIZE), RIGHT(UNIT_SIZE);
+	UP(-UNIT_SIZE), DOWN(UNIT_SIZE), LEFT(-UNIT_SIZE), RIGHT(UNIT_SIZE), NO_DIRECTION(0);
 	
 	private final int screenShift;
 	

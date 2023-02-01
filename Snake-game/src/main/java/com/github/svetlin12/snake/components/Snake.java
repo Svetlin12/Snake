@@ -13,7 +13,6 @@ import static com.github.svetlin12.snake.utils.ScreenConstants.SCREEN_HEIGHT;
 import static com.github.svetlin12.snake.utils.ScreenConstants.SCREEN_WIDTH;
 import static com.github.svetlin12.snake.utils.ScreenConstants.UNIT_SIZE;
 
-
 public class Snake {
 	
 	private static final Color SNAKE_HEAD_COLOR = new Color(71, 102, 27);
@@ -29,7 +28,7 @@ public class Snake {
 		for (int i = 0; i < DEFAULT_SNAKE_BODY_SIZE; i++) {
 			snakeBody.add(new ScreenTile(0, 0));
 		}
-		this.snakeHead = new ScreenTile(generateRandomCoordinate(SCREEN_WIDTH), generateRandomCoordinate(SCREEN_HEIGHT));
+		this.snakeHead = new ScreenTile(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	}
 	
 	public void draw(Graphics graphic) {

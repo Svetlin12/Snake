@@ -26,7 +26,6 @@ public class GamePanel extends JPanel implements ActionListener {
     private static final FontsUtil FONTS_UTIL = new FontsUtil(LabelCreator.FONT_NAME, LabelCreator.FONT_STYLE);
     private final Timer timer; // defines that by each tick of the timer, the actionPerformed() method will be executed
     private Direction currentDirection = Direction.RIGHT;
-    private Direction previousDirection;
     private final Snake snake;
     private Apple apple;
 
@@ -72,34 +71,71 @@ public class GamePanel extends JPanel implements ActionListener {
     }
     
     private void changeCurrentDirectionTo(Direction newDirection) {
-        if (previousDirection == newDirection) {
+        if (newDirection == Direction.NO_DIRECTION || getOppositeDirection() == newDirection) {
             return;
         }
         
-        previousDirection = currentDirection;
         currentDirection = newDirection;
+    }
+    
+    private Direction getOppositeDirection() {
+        return switch (currentDirection) {
+            case UP -> Direction.DOWN;
+            case DOWN -> Direction.UP;
+            case RIGHT -> Direction.LEFT;
+            case LEFT -> Direction.RIGHT;
+            default -> Direction.NO_DIRECTION;
+        };
     }
     
     protected class PlayerKeyboardListener implements KeyListener {
     
         @Override
         public void keyTyped(KeyEvent e) {
+            // No implementation
         }
     
         @Override
         public void keyPressed(KeyEvent e) {
             int keyCode = e.getKeyCode();
-
-            switch (keyCode) {
-                case KeyEvent.VK_UP, KeyEvent.VK_W -> changeCurrentDirectionTo(Direction.UP);
-                case KeyEvent.VK_DOWN, KeyEvent.VK_S -> changeCurrentDirectionTo(Direction.DOWN);
-                case KeyEvent.VK_LEFT, KeyEvent.VK_A -> changeCurrentDirectionTo(Direction.LEFT);
-                case KeyEvent.VK_RIGHT, KeyEvent.VK_D -> changeCurrentDirectionTo(Direction.RIGHT);
+            
+            Direction newDirection = Direction.NO_DIRECTION;
+            
+            if (isButtonUpEvent(keyCode)) {
+                newDirection = Direction.UP;
             }
+            else if (isButtonDownEvent(keyCode)) {
+                newDirection = Direction.DOWN;
+            }
+            else if (isButtonLeftEvent(keyCode)) {
+                newDirection = Direction.LEFT;
+            }
+            else if (isButtonRightEvent(keyCode)) {
+                newDirection = Direction.RIGHT;
+            }
+            
+            changeCurrentDirectionTo(newDirection);
+        }
+        
+        private boolean isButtonUpEvent(int keyCode) {
+            return keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_W;
+        }
+        
+        private boolean isButtonDownEvent(int keyCode) {
+            return keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_S;
+        }
+        
+        private boolean isButtonLeftEvent(int keyCode) {
+            return keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_A;
+        }
+        
+        private boolean isButtonRightEvent(int keyCode) {
+            return keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_D;
         }
     
         @Override
         public void keyReleased(KeyEvent e) {
+            // No implementation
         }
     
     }
