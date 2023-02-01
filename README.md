@@ -1,4 +1,4 @@
-# Snake ![type badge](https://img.shields.io/badge/type-own%20project-brightgreen) ![version badge](https://img.shields.io/badge/version-v1.1.0-blue) ![build badge](https://img.shields.io/badge/build-passing-success) ![language badge](https://img.shields.io/badge/language-Java-yellow) ![language version badge](https://img.shields.io/badge/language%20version-16-informational)
+# Snake ![type badge](https://img.shields.io/badge/type-own%20project-brightgreen) ![version badge](https://img.shields.io/badge/version-v1.1.0-blue) ![build badge](https://img.shields.io/badge/build-passing-success) ![language badge](https://img.shields.io/badge/language-Java-yellow) ![language version badge](https://img.shields.io/badge/language%20version-19-informational)
 
 Implementation of the simple but yet traditional game "Snake".
 
