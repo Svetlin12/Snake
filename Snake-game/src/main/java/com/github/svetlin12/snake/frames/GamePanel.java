@@ -48,7 +48,7 @@ public class GamePanel extends JPanel implements ActionListener {
         String scoreAnnouncer = "Score: " + snake.getEatenApples();
         graphic.setFont(FONTS_UTIL.getSmallFont());
         int scoreAnnouncerSize = graphic.getFontMetrics().stringWidth(scoreAnnouncer); // get the width of the score string
-        graphic.drawString(scoreAnnouncer, SCREEN_WIDTH / 2 - scoreAnnouncerSize / 2, UNIT_SIZE); // position the score string at the top center part of the string
+        graphic.drawString(scoreAnnouncer, SCREEN_WIDTH / 2 - scoreAnnouncerSize / 2, UNIT_SIZE + 5); // position the score string at the top center part of the string
     }
 
     @Override
