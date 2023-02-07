@@ -1,4 +1,4 @@
-# Snake ![type badge](https://img.shields.io/badge/type-own%20project-brightgreen) ![version badge](https://img.shields.io/badge/version-v1.1.0-blue) ![build badge](https://img.shields.io/badge/build-passing-success) ![language badge](https://img.shields.io/badge/language-Java-yellow) ![language version badge](https://img.shields.io/badge/language%20version-19-informational)
+# Snake ![type badge](https://img.shields.io/badge/type-own%20project-brightgreen) ![version badge](https://img.shields.io/badge/version-v1.1.1-blue) ![build badge](https://img.shields.io/badge/build-passing-success) ![language badge](https://img.shields.io/badge/language-Java-yellow) ![language version badge](https://img.shields.io/badge/language%20version-17-informational)
 
 Implementation of the simple but yet traditional game "Snake".
 
@@ -65,6 +65,14 @@ The project realises the game "Snake" which for those of you who don't know is a
 * The user can exit the game via the *"End Game"* option:
 
 ![End Game](https://github.com/Svetlin12/Snake/blob/main/images/End%20Game.png)
+
+## How to run with maven
+
+This step will show you how to run the application through the command line using `mvn` and `java`:
+
+1. Go to the project directory
+2. Execute `mvn clean install`
+3. Execute `java -jar target/Snake-game-<version>.jar` where `<version>` should be replaced with the current version of the game
 
 ## Author
 
